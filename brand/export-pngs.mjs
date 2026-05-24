@@ -28,7 +28,7 @@ function buildOgSvg() {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <rect width="1200" height="630" fill="#000000"/>
   <g transform="translate(${offsetX}, ${offsetY}) scale(${scale})">${lightInner}</g>
-  <text x="80" y="565" font-family="Inter, Helvetica, sans-serif" font-size="22" font-weight="500" fill="#F5F4EF" opacity="0.55" letter-spacing="3">A GROUP OF RECRUITMENT FIRMS</text>
+  <text x="80" y="565" font-family="Inter, Helvetica, sans-serif" font-size="22" font-weight="500" fill="#F5F4EF" opacity="0.55" letter-spacing="3">A GROUP OF SEARCH FIRMS</text>
 </svg>`;
 }
 

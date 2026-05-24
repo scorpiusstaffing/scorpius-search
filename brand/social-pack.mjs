@@ -13,7 +13,7 @@ const BLACK = '#000000';
 const CREAM = '#F5F4EF';
 const RED   = '#C8362A';
 
-const TAGLINE = 'A GROUP OF RECRUITMENT FIRMS';
+const TAGLINE = 'A GROUP OF SEARCH FIRMS';
 const SUBTAG  = 'SCORPIUS STAFFING · SCORPIUS LEADS · ARGUSHAUS';
 
 const wordmarkSvg = fs.readFileSync(path.join(__dirname, 'scorpius-search-wordmark.svg'), 'utf8');
