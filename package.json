@@ -1,0 +1,13 @@
+{
+  "name": "scorpius-search",
+  "version": "1.0.0",
+  "description": "Scorpius Search — group of recruitment firms",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {}
+}
