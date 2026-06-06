@@ -270,12 +270,13 @@ img { display: block; max-width: 100%; }
 
 /* ---------- Partner firm (editorial band, not a 4th vertical) ---------- */
 .partner {
-  padding: clamp(4rem, 9vh, 6.5rem) 0;
+  padding: clamp(4.5rem, 11vh, 7rem) 0;
   border-top: 1px solid var(--line);
-  background: var(--bg);
+  background: var(--bg-card);
+  position: relative;
 }
 
-.partner .container {
+.partner-inner {
   max-width: 720px;
   text-align: center;
 }
@@ -283,53 +284,64 @@ img { display: block; max-width: 100%; }
 .partner-label {
   display: inline-block;
   font-family: var(--mono);
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 500;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--muted);
-  margin-bottom: 1.5rem;
-  padding: 0.4rem 0.85rem;
-  border: 1px solid var(--line);
-  border-radius: 2px;
+  margin-bottom: 2.5rem;
+  position: relative;
 }
 
-.partner-name {
+.partner-label::before,
+.partner-label::after {
+  content: "";
   display: inline-block;
-  font-family: var(--sans);
-  font-weight: 500;
-  font-size: clamp(1.75rem, 3.4vw, 2.6rem);
-  letter-spacing: -0.025em;
-  color: var(--ink);
-  line-height: 1.05;
-  margin-bottom: 1.25rem;
-  transition: color 0.2s ease;
+  width: 36px;
+  height: 1px;
+  background: var(--line);
+  vertical-align: middle;
+  margin: 0 1rem;
 }
 
-.partner-name:hover {
-  color: var(--muted);
+.partner-logo-link {
+  display: inline-block;
+  margin-bottom: 1.75rem;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.partner-logo-link:hover {
+  opacity: 0.75;
+  transform: translateY(-1px);
+}
+
+.partner-logo {
+  display: block;
+  height: clamp(34px, 5vw, 48px);
+  width: auto;
+  margin: 0 auto;
 }
 
 .partner-desc {
   font-family: var(--sans);
-  font-size: 1.02rem;
-  line-height: 1.55;
+  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+  line-height: 1.6;
   color: var(--muted);
-  max-width: 50ch;
+  max-width: 52ch;
   margin: 0 auto 1.75rem;
 }
 
 .partner-link {
   display: inline-block;
   font-family: var(--mono);
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   font-weight: 500;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ink);
   border-bottom: 1px solid var(--ink);
   padding-bottom: 3px;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: opacity 0.2s ease;
 }
 
 .partner-link:hover {
@@ -337,7 +349,8 @@ img { display: block; max-width: 100%; }
 }
 
 @media (max-width: 600px) {
-  .partner-label { font-size: 0.65rem; padding: 0.35rem 0.7rem; }
+  .partner-label::before,
+  .partner-label::after { width: 18px; margin: 0 0.6rem; }
   .partner-desc { font-size: 0.95rem; }
 }
 
