@@ -113,6 +113,51 @@ function centered({ width, height, wordmarkW, taglineSize }) {
   return svg;
 }
 
+/* WhatsApp Business cover: wordmark in TOP SAFE-ZONE so the centred
+ * profile-pic overlay doesn't sit on top of it. */
+function whatsappCover({ width, height }) {
+  const wordmarkW = 440;
+  const scale = wordmarkW / vw;
+  const wordmarkH = vh * scale;
+
+  const tagSize = 17;
+  const hdrSize = 12;
+  const ftrSize = 12;
+
+  // Wordmark anchored ~14% from top (well above the centered profile pic)
+  const wmX = (width - wordmarkW) / 2;
+  const wmY = Math.round(height * 0.13);
+  const tagY = wmY + wordmarkH + Math.round(tagSize * 1.8);
+
+  let svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">`;
+  svg += `<defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="${CREAM_DK}"/>
+      <stop offset="60%" stop-color="${CREAM}"/>
+      <stop offset="100%" stop-color="${CREAM}"/>
+    </linearGradient>
+  </defs>`;
+  svg += `<rect width="${width}" height="${height}" fill="url(#bg)"/>`;
+
+  // Wordmark — top center
+  svg += `<g transform="translate(${wmX}, ${wmY}) scale(${scale})">${innerOriginal}</g>`;
+
+  // Tagline directly under wordmark, still in top safe-zone
+  svg += `<text x="${width/2}" y="${tagY}" font-family="Inter, Helvetica, sans-serif" font-size="${tagSize}" font-weight="500" fill="${INK}" opacity="0.6" letter-spacing="5" text-anchor="middle">${TAGLINE}</text>`;
+
+  // EST. 2022 — top right corner
+  svg += `<text x="${width - 36}" y="44" font-family="JetBrains Mono, Menlo, monospace" font-size="${hdrSize}" font-weight="500" fill="${INK}" letter-spacing="2.5" opacity="0.65" text-anchor="end">EST. 2022</text>`;
+
+  // URL — bottom right (away from centered profile-pic overlay)
+  svg += `<text x="${width - 36}" y="${height - 30}" font-family="JetBrains Mono, Menlo, monospace" font-size="${ftrSize}" font-weight="400" fill="${INK}" opacity="0.55" letter-spacing="1.5" text-anchor="end">SCORPIUSSEARCH.COM</text>`;
+
+  // Sister firms — bottom LEFT (also clear of the centered overlay)
+  svg += `<text x="36" y="${height - 30}" font-family="JetBrains Mono, Menlo, monospace" font-size="${ftrSize}" font-weight="400" fill="${INK}" opacity="0.55" letter-spacing="1.5" text-anchor="start">STAFFING · LEADS · ARGUSHAUS</text>`;
+
+  svg += '</svg>';
+  return svg;
+}
+
 function emailSig({ width, height }) {
   const wordmarkW = 360;
   const scale = wordmarkW / vw;
@@ -143,7 +188,7 @@ render(banner({ width: 1500, height: 500, wordmarkW: 540, centerX: 1050 }), `${o
 render(centered({ width: 1080, height: 1080, wordmarkW: 720 }), `${outDir}/instagram-post-1080x1080.png`);
 render(centered({ width: 1080, height: 1920, wordmarkW: 760 }), `${outDir}/instagram-story-1080x1920.png`);
 render(centered({ width: 2560, height: 1440, wordmarkW: 1000 }), `${outDir}/youtube-banner-2560x1440.png`);
-render(banner({ width: 1284, height: 540, wordmarkW: 460, centerX: 642 }), `${outDir}/whatsapp-business-cover-1284x540.png`);
+render(whatsappCover({ width: 1284, height: 540 }), `${outDir}/whatsapp-business-cover-1284x540.png`);
 render(emailSig({ width: 600, height: 150 }), `${outDir}/email-signature-transparent.png`);
 
 console.log('\n✓ Scorpius Search social pack done.');
