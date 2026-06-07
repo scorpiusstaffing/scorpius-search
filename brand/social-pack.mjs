@@ -143,6 +143,7 @@ render(banner({ width: 1500, height: 500, wordmarkW: 540, centerX: 1050 }), `${o
 render(centered({ width: 1080, height: 1080, wordmarkW: 720 }), `${outDir}/instagram-post-1080x1080.png`);
 render(centered({ width: 1080, height: 1920, wordmarkW: 760 }), `${outDir}/instagram-story-1080x1920.png`);
 render(centered({ width: 2560, height: 1440, wordmarkW: 1000 }), `${outDir}/youtube-banner-2560x1440.png`);
+render(banner({ width: 1284, height: 540, wordmarkW: 460, centerX: 642 }), `${outDir}/whatsapp-business-cover-1284x540.png`);
 render(emailSig({ width: 600, height: 150 }), `${outDir}/email-signature-transparent.png`);
 
 console.log('\n✓ Scorpius Search social pack done.');
