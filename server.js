@@ -23,20 +23,32 @@ const MIME = {
   '.woff2':'font/woff2',
 };
 
+// Returns the resolved file path, or null when the request is malformed
+// (bad percent-encoding such as "/%") or escapes the web root.
+// decodeURIComponent throws a URIError on malformed input; without the
+// try/catch a single such request crashed the whole process.
 function safeJoin(root, requestPath) {
-  const decoded = decodeURIComponent(requestPath.split('?')[0]);
+  let decoded;
+  try {
+    decoded = decodeURIComponent(requestPath.split('?')[0]);
+  } catch (err) {
+    return null;
+  }
+  if (decoded.includes('\0')) return null;
   const resolved = path.normalize(path.join(root, decoded));
   if (!resolved.startsWith(root)) return null;
   return resolved;
 }
 
-const server = http.createServer((req, res) => {
+function handle(req, res) {
   let urlPath = req.url || '/';
   if (urlPath === '/' || urlPath === '') urlPath = '/index.html';
 
   const filePath = safeJoin(ROOT, urlPath);
   if (!filePath) {
-    res.writeHead(403); res.end('Forbidden'); return;
+    res.writeHead(400, { 'Content-Type': 'text/plain; charset=utf-8' });
+    res.end('Bad request');
+    return;
   }
 
   fs.stat(filePath, (err, stat) => {
@@ -83,8 +95,19 @@ const server = http.createServer((req, res) => {
       res.end(data);
     });
   });
+}
+
+const server = http.createServer((req, res) => {
+  // One bad request must never take the whole site down.
+  try {
+    handle(req, res);
+  } catch (err) {
+    console.error('Request handler error for', req.url, err);
+    if (!res.headersSent) res.writeHead(500);
+    res.end('Server error');
+  }
 });
 
 server.listen(PORT, () => {
-  console.log(`Argushaus running on :${PORT}`);
+  console.log(`Scorpius Search running on :${PORT}`);
 });
