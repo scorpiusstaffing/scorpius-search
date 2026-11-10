@@ -1,0 +1,65 @@
+/* =============================================================
+   UNIFY NOW (rec2rec): brand layer on top of /shared/system.css
+   Default brand tokens apply. This file holds the logo lockup and
+   the few components the system does not have yet:
+   .page (sub-page opening), .list (bullet list), .doc-body (legal
+   pages), .facts (deflist with the key facts next to a title),
+   .row-pay / .row-link (vacancy rows), .form-status.
+   Nothing here changes a size, colour or spacing token.
+   ============================================================= */
+
+/* ---------- Logo: the 01 Optical lockup as inline SVG ---------- */
+.logo { display: inline-flex; align-items: center; color: inherit; }
+.logo-svg { height: 1.9rem; width: auto; }
+.band-ink .logo-svg { --logo-letter: var(--ink); }
+.foot-brand .logo-svg { height: 2.25rem; }
+@media (max-width: 720px) { .nav-logo .logo-svg { height: 1.6rem; } }
+
+/* ---------- Sub-page opening ---------- */
+.page { padding-top: calc(var(--nav-h) + var(--sec)); padding-bottom: var(--block); }
+.page .h1 { max-width: 12em; }
+.page .split-body .lede { max-width: 26em; }
+
+/* ---------- Key facts next to a title (vacancy, contact) ---------- */
+.facts > div { grid-template-columns: minmax(0, 3fr) minmax(0, 9fr); }
+.facts dd a { white-space: nowrap; }
+
+/* ---------- Vacancy rows: a wider title column than the system row ---------- */
+.rows--vac .row-title { grid-column: 2 / 5; }
+.rows--vac .row-meta { grid-column: 5 / 8; }
+.rows--vac .row-text { grid-column: 8 / -1; }
+@media (max-width: 900px) { .rows--vac .row-title { grid-column: 2 / 7; } .rows--vac .row-meta { grid-column: 7 / -1; } .rows--vac .row-text { grid-column: 2 / -1; } }
+@media (max-width: 560px) { .rows--vac .row-title, .rows--vac .row-meta, .rows--vac .row-text { grid-column: 2 / -1; } }
+.row-link { transition: color .25s ease; }
+.row-link:hover, .row-link:focus-visible { color: var(--accent); }
+.row-pay { font-family: var(--sans); font-weight: 600; font-size: var(--fs-body); line-height: 1.4; margin-bottom: var(--s3); }
+.row-meta { color: var(--ink); }
+.job-sec { margin-top: var(--block); }
+.job-h { padding-top: .25em; }
+
+/* ---------- Bullet list ---------- */
+.list { max-width: var(--measure); }
+.list li { position: relative; padding-left: 1.35em; }
+.list li + li { margin-top: .45em; }
+.list li::before { content: ""; position: absolute; left: 0; top: .72em; width: 5px; height: 5px; background: var(--ink); }
+.band-ink .list li::before { background: var(--on-ink); }
+p + .list, .list + p { margin-top: 1em; }
+
+/* ---------- Forms ---------- */
+.form .actions { align-items: center; }
+.form .actions .small { max-width: 24em; color: var(--muted); }
+.form-status { border-left: 2px solid var(--accent); padding-left: var(--s4); }
+select.input { appearance: none; -webkit-appearance: none; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2315191B' stroke-width='1.5'%3E%3Cpath d='M5 9l7 7 7-7'/%3E%3C/svg%3E") right center/1rem no-repeat; padding-right: 1.75rem; cursor: pointer; }
+
+/* ---------- Legal pages ---------- */
+.doc-body { border-top: 1px solid var(--ink); }
+.doc-body section { padding: var(--s5) 0 calc(var(--s5) + .2rem); border-bottom: 1px solid var(--line); display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); column-gap: var(--gap); row-gap: var(--s3); }
+.doc-body p, .doc-body .list { max-width: var(--measure); }
+.doc-body .sub { font-family: var(--sans); font-weight: 600; }
+.doc-body p + .sub { margin-top: 1.2em; }
+@media (max-width: 720px) { .doc-body section { grid-template-columns: 1fr; } }
+
+/* ---------- Services on the Your talent page ---------- */
+.svc { padding-top: var(--block); border-top: 1px solid var(--line); }
+.svc + .svc { margin-top: var(--block); }
+.svc .h2 { margin-top: var(--s4); }
