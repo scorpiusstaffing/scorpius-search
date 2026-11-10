@@ -60,7 +60,15 @@
 
 <main id="main">
 
-<section class="hero band-ink" id="top">
+<section class="hero hero--media band-ink" id="top" style="--focus: 50% 30%">
+  <div class="media" aria-hidden="true">
+    <picture><source media="(max-width: 720px)" srcset="/carter-james/assets/media/cj-hero-poster-phone.jpg"><img src="/unifynow/carter-james/assets/media/cj-hero-poster.jpg" alt="" width="1920" height="1080" fetchpriority="high"></picture>
+    <video muted autoplay loop playsinline preload="metadata" disablepictureinpicture disableremoteplayback tabindex="-1">
+      <source data-src="/unifynow/carter-james/assets/media/cj-hero-phone.mp4" type="video/mp4" media="(max-width: 720px)">
+      <source data-src="/unifynow/carter-james/assets/media/cj-hero-1920.mp4" type="video/mp4">
+    </video>
+    <div class="veil"></div>
+  </div>
   <div class="wrap hero-wrap">
     <div class="hero-top" data-r>
       <p class="label">Search firm for SaaS Sales roles</p>
@@ -80,6 +88,7 @@
       </div>
     </div>
   </div>
+  <button class="media-toggle" type="button" hidden><svg class="i-pause" viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 2v8M8.5 2v8" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><svg class="i-play" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 1.8v8.4L10 6z" fill="currentColor"/></svg><span class="t" aria-hidden="true">Pause</span><span class="vh">Pause background video</span></button>
 </section>
 
 <section id="firm">
@@ -97,7 +106,7 @@
     <dl class="facts cards" data-r>
       <div class="card"><dt class="label">Focus</dt><dd>SaaS Sales roles, nothing else</dd></div>
       <div class="card"><dt class="label">For</dt><dd>SaaS and tech scale-ups</dd></div>
-      <div class="card"><dt class="label">Where</dt><dd>The Netherlands and Germany primarily. Benelux and DACH.</dd></div>
+      <div class="card"><dt class="label">Where</dt><dd>The Netherlands and Germany, and the wider Benelux and DACH.</dd></div>
     </dl>
     <div class="cta-row" style="margin-top: var(--block)" data-r>
       <p class="h3">Search wasn’t built for the speed of a scale-up. We built Carter James to fix this.</p>
@@ -105,13 +114,16 @@
   </div>
 </section>
 
-<section class="band-ink" id="roles">
+<section class="band-ink has-tile" id="roles">
   <div class="wrap">
     <header class="sec-head" data-r>
       <div class="rule" aria-hidden="true"></div>
       <p class="label">The roles</p>
     </header>
-    <h2 class="h2" data-r>Every seat in the <span class="nw">revenue team.</span></h2>
+    <div class="tile-row">
+      <svg class="brand-tile" viewBox="11 13 43.5 53" aria-hidden="true"><path d="M11 31 29 13h22.5q3 0 3 3v12q0 3-3 3z"/><path d="M11 47.5 27.8 31.5v17h23.7q3 0 3 3V63q0 3-3 3H11z"/></svg>
+      <h2 class="h2" data-r>Every seat in the <span class="nw">revenue team.</span></h2>
+    </div>
     <ol class="rows roles-list" style="margin-top: var(--block)">
         <li class="row" id="role-open" data-r>
           <span class="row-n">01</span>
@@ -185,19 +197,29 @@
       <div class="rule" aria-hidden="true"></div>
       <p class="label">For companies</p>
     </header>
-    <div class="split">
-      <h2 class="h2" data-r>Your next sales hire <span class="nw">won’t take months.</span></h2>
-      <figure class="stat split-body" data-r>
-        <p class="stat-n"><span class="tnum">5</span> weeks</p>
-        <figcaption class="label">Hiring time on average</figcaption>
-      </figure>
+    <div class="co-grid">
+      <div class="co-text">
+        <h2 class="h2" data-r>Your next sales hire <span class="nw">won’t take months.</span></h2>
+        <figure class="stat keyfig" data-r>
+          <p class="stat-n"><span class="stat-num tnum">5</span> <span class="stat-unit">weeks</span></p>
+          <figcaption class="label">Hiring time on average</figcaption>
+        </figure>
+        <figure class="quote" data-r>
+          <blockquote>
+            <p>“Within our first month of working with Carter James we already managed to make <span class="tnum">2</span> extremely difficult hires who are still exceeding expectations until this day. I was impressed how well they understood what we were looking for and how quickly they got us to speak with them within a matter of days.”</p>
+          </blockquote>
+          <figcaption><span class="quote-name">Alex Sinkinson</span><span class="label">Alpha Group</span></figcaption>
+        </figure>
+      </div>
+      <div class="media-frame co-img" data-r>
+        <picture>
+          <source type="image/webp" media="(max-width: 720px)" srcset="/carter-james/assets/media/cj-candidate-720.webp">
+          <source media="(max-width: 720px)" srcset="/carter-james/assets/media/cj-candidate-720.jpg">
+          <source type="image/webp" srcset="/carter-james/assets/media/cj-candidate.webp">
+          <img src="/unifynow/carter-james/assets/media/cj-candidate.jpg" alt="" width="1056" height="1320" loading="lazy" decoding="async">
+        </picture>
+      </div>
     </div>
-    <figure class="quote" style="margin-top: var(--block)" data-r>
-      <blockquote>
-        <p>“Within our first month of working with Carter James we already managed to make <span class="tnum">2</span> extremely difficult hires who are still exceeding expectations until this day. I was impressed how well they understood what we were looking for and how quickly they got us to speak with them within a matter of days.”</p>
-      </blockquote>
-      <figcaption><span class="quote-name">Alex Sinkinson</span><span class="label">Alpha Group</span></figcaption>
-    </figure>
   </div>
 </section>
 
@@ -307,10 +329,6 @@
         <a href="/unifynow/carter-james/privacy/">Privacy policy</a>
         <a href="/unifynow/carter-james/terms/">Terms</a>
       </nav>
-      <div class="foot-col">
-        <p class="label">Where</p>
-        <p>The Netherlands<br>Germany<br>Benelux and DACH</p>
-      </div>
     </div>
     <div class="foot-base">
       <p>© <span class="tnum">2026</span> Carter James. All rights reserved.</p>

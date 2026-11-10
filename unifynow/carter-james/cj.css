@@ -82,3 +82,23 @@
 .brand-cj .nav > .nav-group { display: none; }
 .brand-cj .menu-foot .nav-group .un-logo { height: 1.25rem; }
 .contact-row { justify-content: flex-start; }
+
+/* ---------- Media (system components in /shared/system.css, section 11 of DESIGN_SYSTEM.md) ---------- */
+/* The key figure: "5 weeks" at display size, the unit at h2 size on the same baseline */
+.keyfig .stat-n { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0 .22em; font-stretch: 100%; line-height: 1; }
+.keyfig .stat-num { font-size: clamp(5.5rem, 2.6rem + 7.4vw, 9.75rem); font-weight: 500; line-height: .8; letter-spacing: -.055em; }
+.keyfig .stat-unit { font-size: var(--fs-h2); font-weight: 600; letter-spacing: -.025em; }
+.keyfig .label { margin-top: var(--s4); }
+/* For companies: text column (headline, key figure, quote) beside one tall photograph of a candidate, petrol to brass */
+.co-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); row-gap: var(--block); }
+.co-text { grid-column: 1 / 8; display: flex; flex-direction: column; gap: var(--block); }
+.co-text .h2 { max-width: 13em; }
+.co-img { grid-column: 9 / -1; aspect-ratio: auto; min-height: 30rem; --focus: 50% 30%; }
+@media (max-width: 900px) {
+  .co-text, .co-img { grid-column: 1 / -1; }
+  .co-img { aspect-ratio: 4 / 5; min-height: 0; max-width: 26rem; --focus: 50% 30%; }
+}
+
+
+/* Brand tile (system component): the Carter James mark in brass, quiet, beside the roles headline */
+.band-ink .brand-tile { fill: rgb(212 185 140 / .09); --tile: clamp(10rem, 13vw, 12.5rem); }   /* a two-line headline: smaller, so the mark clears the section rule */

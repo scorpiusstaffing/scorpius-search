@@ -29,6 +29,7 @@
   --accent:       #A64A28;          /* 5.2:1 on paper */
   --accent-on-ink:#E8A77B;          /* 7.1:1 on the band */
   --line:         rgba(18, 42, 34, .2);
+  --veil:         15 46 37;         /* the band colour as RGB channels, for the media veil */
   --display: "Bricolage Grotesque", "Sans Fallback", Arial, sans-serif;
   --sans:    "Instrument Sans", "Sans Fallback", Arial, sans-serif;
   --text:    "Instrument Sans", "Sans Fallback", Arial, sans-serif;
@@ -70,6 +71,7 @@
   --accent:       #7A5C33;          /* 5.4:1 on paper */
   --accent-on-ink:#D4B98C;          /* 9.3:1 on the band */
   --line:         #B59977;          /* brass: the one hairline colour of Carter James, on both grounds */
+  --veil:         5 27 39;
   --display: "Archivo", "Sans Fallback", Arial, sans-serif;
   --sans:    "Archivo", "Sans Fallback", Arial, sans-serif;
   --text:    "Newsreader", "Serif Fallback", Georgia, serif;
@@ -172,7 +174,7 @@ blockquote { hanging-punctuation: first; }
 .nav {
   position: fixed; inset: 0 0 auto 0; z-index: 100; height: var(--nav-h);
   display: flex; align-items: center; gap: clamp(1rem, 2.6vw, 2.5rem);
-  padding-inline: var(--gutter);
+  padding-inline: max(var(--gutter), calc((100% - var(--max)) / 2));   /* the same edges as the content */
   background: var(--paper); color: var(--ink); border-bottom: 1px solid var(--line);
 }
 .nav-group {
@@ -253,6 +255,74 @@ blockquote { hanging-punctuation: first; }
   .hero-side { max-width: 36rem; }
 }
 @media (max-width: 720px) { .hero { min-height: 0; } .hero-grid { padding-block: var(--s7) var(--s6); } .split-body.stat { padding-top: var(--s3); } }
+
+/* ---------- Media: hero video, opening strip, image band, framed image, brand tile ----------
+   One calm layer of moving or still image. Rules in DESIGN_SYSTEM.md section 11.
+   The picture sits at the top of its band and fades into the band colour; text stands on the faded
+   part or on solid colour, never on a face. Contrast measured over every frame (_review/CRITIQUE.md). */
+.media { position: absolute; inset: 0 0 auto 0; height: 100%; z-index: 0; overflow: hidden; background: var(--band); }
+.media img, .media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--focus, 50% 50%); }
+.media picture { display: contents; }
+.veil { position: absolute; inset: 0; }
+/* With reduced motion, ?static=1 or a failed script, only the poster shows (the script never sets a source) */
+.static .media video { display: none; }
+@media (prefers-reduced-motion: reduce) { .media video { display: none; } }
+
+/* Media hero: the picture is a block of its own at the top of the hero, fading to solid band colour at its
+   lower edge; the label, headline, lede and actions follow below it on solid colour. Nothing of the
+   footage can sit behind text at any viewport height (a desk edge once read as a rule behind the lede). */
+.hero--media { position: relative; isolation: isolate; flex-direction: column; min-height: min(92vh, 54rem); min-height: min(92svh, 54rem); }
+.hero--media .media { position: relative; inset: auto; height: auto; flex: 1 1 auto; min-height: 17rem; margin-inline: calc(-1 * var(--gutter)); }
+.hero--media .veil { background: linear-gradient(to bottom, rgb(var(--veil) / .3) 0%, rgb(var(--veil) / 0) 18%, rgb(var(--veil) / 0) 52%, rgb(var(--veil) / .55) 76%, rgb(var(--veil) / .92) 90%, rgb(var(--veil)) 96%); inset: 0 0 -2px 0; }
+.hero--media .hero-wrap { position: relative; z-index: 1; flex: none; padding-top: var(--s6); padding-bottom: calc(var(--s5) + 2.75rem); }
+.hero--media .hero-grid { flex: none; padding-block: var(--s6) 0; }
+.hero--media .label { color: var(--on-ink); }
+@media (max-width: 720px) {
+  /* Phones: a 3 / 2 picture across the top, wide enough for both people, then the text */
+  .hero--media { min-height: 0; }
+  .hero--media .media { flex: none; min-height: 0; aspect-ratio: 3 / 2; }
+  .hero--media .media img, .hero--media .media video { object-position: 50% 50%; }
+  .hero--media .veil { background: linear-gradient(to bottom, rgb(var(--veil) / .25) 0%, rgb(var(--veil) / 0) 20%, rgb(var(--veil) / 0) 60%, rgb(var(--veil) / .75) 86%, rgb(var(--veil)) 96%); inset: 0 0 -2px 0; }
+  .hero--media .hero-wrap { padding-top: var(--s5); }
+}
+
+/* The one control on a moving image: pause and play, small, bottom right, on the band */
+.media-toggle {
+  position: absolute; z-index: 2; right: max(var(--gutter), calc((100% - var(--max)) / 2)); bottom: var(--s5);
+  display: inline-flex; align-items: center; gap: .5em; min-height: 2.75rem; padding: 0 .1rem;
+  font-family: var(--sans); font-weight: 600; font-size: var(--fs-label); letter-spacing: .08em; text-transform: uppercase;
+  color: var(--on-ink); opacity: .78; transition: opacity .25s ease;
+}
+.media-toggle:hover, .media-toggle:focus-visible { opacity: 1; }
+.media-toggle svg { width: .8rem; height: .8rem; }
+.media-toggle .i-play, .media-toggle[data-paused="1"] .i-pause { display: none; }
+.media-toggle[data-paused="1"] .i-play { display: block; }
+.media-toggle[hidden], .static .media-toggle { display: none; }
+
+/* Opening strip on sub-pages: one calm, sharp detail of the same office (lamps, a pinboard; never a face),
+   dark, across the top of the opening band. One picture per site, the same on every sub-page. */
+.has-strip { position: relative; isolation: isolate; }
+.has-strip > .wrap { position: relative; z-index: 1; }
+.media--strip { height: min(100%, 20rem); }
+.media--strip .veil { background: linear-gradient(to bottom, rgb(var(--veil) / .58) 0%, rgb(var(--veil) / .7) 55%, rgb(var(--veil)) 100%); }
+
+/* Image band: one photograph between two bands, no text on it, inside the content width */
+.media-band { padding: 0 var(--gutter); background: linear-gradient(to bottom, var(--paper) 50%, var(--band) 50%); }   /* sits across the line between a light and a dark band */
+.media-band > div { position: relative; max-width: var(--max); margin-inline: auto; aspect-ratio: 2 / 1; overflow: hidden; background: var(--band); }
+.media-band img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--focus, 50% 50%); }
+@media (max-width: 720px) { .media-band > div { aspect-ratio: 4 / 3; } }
+
+/* Framed image inside a grid, beside text */
+.media-frame { position: relative; overflow: hidden; background: var(--band); aspect-ratio: 4 / 5; }
+.media-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--focus, 50% 50%); }
+
+/* Brand tile: each site's mark, large and quiet, in the empty space right of one dark band's headline,
+   cropped by the edge of the window, never behind text; not on phones. Colours in the brand layer. */
+.has-tile { overflow: hidden; }
+.tile-row { position: relative; }
+.tile-row > :not(.brand-tile) { position: relative; z-index: 1; }
+.brand-tile { --tile: clamp(12rem, 18vw, 16rem); position: absolute; z-index: 0; bottom: calc(var(--s4) - var(--block)); width: var(--tile); height: var(--tile); right: calc((100% - 100vw) / 2 - var(--tile) * .22); pointer-events: none; }   /* ends just above the next hairline */
+@media (max-width: 900px) { .brand-tile { display: none; } }
 
 /* A section right after the hero keeps one rhythm step, not two */
 .hero + section, .hero + .section, .page + section, .doc + section { padding-top: var(--block); }

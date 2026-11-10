@@ -6,7 +6,7 @@
 <title>Unify Now</title>
 <meta name="description" content="Unify Now: recruitment to recruitment, and Carter James: search for SaaS Sales roles.">
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#F1F3EE">
+<meta name="theme-color" content="#0F2E25">
 <meta property="og:title" content="Unify Now">
 <meta property="og:image" content="/unifynow/assets/og.png">
 <meta property="og:image:width" content="1200">
@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="/unifynow/gateway.css">
 <link rel="icon" type="image/svg+xml" href="/unifynow/favicon.svg">
 </head>
-<body class="gateway">
+<body class="gateway gateway--media">
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="gw-head">
@@ -27,22 +27,43 @@
   </a>
 </header>
 
-<main id="main" class="gw-main">
+<main id="main" class="gw-main" data-video-scope>
   <h1 class="vh">Unify Now: choose a site</h1>
-  <div class="gw-choice">
-    <a class="gw-block gw-block--un" href="/unifynow/rec2rec/" data-r>
-      <p class="label"><b>01</b>Rec2Rec</p>
-      <span class="gw-name">Unify Now</span>
-      <p class="gw-text">Executive search agency for the recruitment industry: connecting sales, recruitment and management professionals with exclusively selected clients.</p>
-      <span class="gw-go"><span>Enter</span><svg class="arr" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 9.5 9.5 2.5M4 2.5h5.5V8" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></span>
+  <div class="gw-split">
+    <a class="gw-door gw-door--un" href="/unifynow/rec2rec/" style="--focus: 58% 30%">
+      <div class="media" aria-hidden="true">
+        <picture><source media="(max-width: 720px)" srcset="/rec2rec/assets/media/un-hero-poster-phone.jpg"><img src="/unifynow/rec2rec/assets/media/un-hero-poster.jpg" alt="" width="1920" height="1080" fetchpriority="high"></picture>
+        <video muted autoplay loop playsinline preload="metadata" disablepictureinpicture disableremoteplayback tabindex="-1">
+          <source data-src="/unifynow/rec2rec/assets/media/un-hero-phone.mp4" type="video/mp4" media="(max-width: 720px)">
+          <source data-src="/unifynow/rec2rec/assets/media/un-hero-1920.mp4" type="video/mp4">
+        </video>
+        <div class="veil"></div>
+      </div>
+      <div class="gw-door-text">
+        <p class="label"><b>01</b>Rec2Rec</p>
+        <span class="gw-name">Unify Now</span>
+        <p class="gw-text">Executive search agency for the recruitment industry: connecting sales, recruitment and management professionals with exclusively selected clients.</p>
+        <span class="gw-go"><span>Enter</span><svg class="arr" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 9.5 9.5 2.5M4 2.5h5.5V8" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></span>
+      </div>
     </a>
-    <a class="gw-block gw-block--cj" href="/unifynow/carter-james/" data-r>
-      <p class="label"><b>02</b>SaaS Sales</p>
-      <span class="gw-name">Carter James</span>
-      <p class="gw-text">Specialist search firm for SaaS Sales roles: from SDR to CRO, for SaaS and tech scale-ups in the Netherlands and Germany.</p>
-      <span class="gw-go"><span>Enter</span><svg class="arr" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 9.5 9.5 2.5M4 2.5h5.5V8" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></span>
+    <a class="gw-door gw-door--cj" href="/unifynow/carter-james/" style="--focus: 40% 30%">
+      <div class="media" aria-hidden="true">
+        <picture><source media="(max-width: 720px)" srcset="/carter-james/assets/media/cj-hero-poster-phone.jpg"><img src="/unifynow/carter-james/assets/media/cj-hero-poster.jpg" alt="" width="1920" height="1080" fetchpriority="high"></picture>
+        <video muted autoplay loop playsinline preload="metadata" disablepictureinpicture disableremoteplayback tabindex="-1">
+          <source data-src="/unifynow/carter-james/assets/media/cj-hero-phone.mp4" type="video/mp4" media="(max-width: 720px)">
+          <source data-src="/unifynow/carter-james/assets/media/cj-hero-1920.mp4" type="video/mp4">
+        </video>
+        <div class="veil"></div>
+      </div>
+      <div class="gw-door-text">
+        <p class="label"><b>02</b>SaaS Sales</p>
+        <span class="gw-name">Carter James</span>
+        <p class="gw-text">Specialist search firm for SaaS Sales roles: from SDR to CRO, for SaaS and tech scale-ups in the Netherlands and Germany.</p>
+        <span class="gw-go"><span>Enter</span><svg class="arr" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 9.5 9.5 2.5M4 2.5h5.5V8" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></span>
+      </div>
     </a>
   </div>
+  <button class="media-toggle" type="button" hidden><svg class="i-pause" viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 2v8M8.5 2v8" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><svg class="i-play" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 1.8v8.4L10 6z" fill="currentColor"/></svg><span class="t" aria-hidden="true">Pause</span><span class="vh">Pause background video</span></button>
 </main>
 
 <footer class="gw-foot">

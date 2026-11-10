@@ -71,3 +71,14 @@ select.input { appearance: none; -webkit-appearance: none; background: url("data
 .band-ink .facts > div { border-bottom-color: var(--line); }
 .band-ink .facts dd a { color: var(--on-ink); }
 .band-ink .svc { border-top-color: var(--line); }
+
+/* ---------- Brand tile (system component, DESIGN_SYSTEM.md section 11): the Unify Now tile mark,
+   paper at 5% with the glyph cut out in the band colour ---------- */
+.band-ink .brand-tile .un-tile { fill: rgb(241 243 238 / .05); }
+.band-ink .brand-tile .un-glyph { fill: var(--band); }
+
+/* ---------- Copper as a constant mark: the hairline that opens every section ---------- */
+.sec-head .rule { background: var(--accent); }
+
+/* ---------- Vacancy rows: salary straight under the cities on small screens ---------- */
+.rows--vac .row-pay { margin-top: 0; }

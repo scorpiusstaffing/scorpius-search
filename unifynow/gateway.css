@@ -1,6 +1,6 @@
 /* Unify Now gateway: one page, two doors. Sits on /shared/system.css. */
 .gateway { min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; }
-.gw-head { padding: var(--s5) var(--gutter) 0; }
+.gw-head { padding: var(--s5) max(var(--gutter), calc((100% - var(--max)) / 2)) 0; }
 .gw-logo { display: inline-block; color: var(--ink); }
 .gw-logo .un-logo { height: 1.75rem; }
 .gw-main { flex: 1; display: flex; align-items: center; padding: var(--s8) var(--gutter); }
@@ -13,7 +13,7 @@
 .gw-go .arr { width: .8em; height: .8em; transition: transform .3s var(--ease); }
 .gw-block:hover .gw-name, .gw-block:focus-visible .gw-name, .gw-block:hover .gw-go, .gw-block:focus-visible .gw-go { color: var(--accent); }
 .gw-block:hover .arr, .gw-block:focus-visible .arr { transform: translate(2px, -2px); }
-.gw-foot { padding: var(--s4) var(--gutter) var(--s5); display: flex; justify-content: space-between; align-items: center; gap: var(--s3) var(--s5); flex-wrap: wrap; font-family: var(--sans); font-size: var(--fs-label); color: var(--muted); }
+.gw-foot { padding: var(--s4) max(var(--gutter), calc((100% - var(--max)) / 2)) var(--s5); display: flex; justify-content: space-between; align-items: center; gap: var(--s3) var(--s5); flex-wrap: wrap; font-family: var(--sans); font-size: var(--fs-label); color: var(--muted); }
 .gw-foot nav { display: flex; gap: var(--s5); flex-wrap: wrap; }
 .gw-foot a { border-bottom: 1px solid transparent; transition: color .25s ease, border-color .25s ease; }
 .gw-foot a:hover, .gw-foot a:focus-visible { color: var(--ink); border-bottom-color: currentColor; }
@@ -30,3 +30,48 @@
 .gw-block--cj .gw-name { color: #051B27; }
 .gw-block--un:hover .gw-name, .gw-block--un:focus-visible .gw-name, .gw-block--un:hover .gw-go, .gw-block--un:focus-visible .gw-go { color: #A64A28; }
 .gw-block--cj:hover .gw-name, .gw-block--cj:focus-visible .gw-name, .gw-block--cj:hover .gw-go, .gw-block--cj:focus-visible .gw-go { color: #7A5C33; }
+
+/* ---------- The gateway with media (index.html): two full-height doors, each its brand's hero loop ----------
+   Split screen on desktop, stacked on phones (each about half the viewport). The whole half is the link.
+   The picture is graded with the brand's dark colour; the text block carries its own fade to solid colour,
+   so no footage ever sits behind text. Hover: the hovered half brightens a little and the arrow moves. */
+.gateway--media { --gw-pad: clamp(1.25rem, 5.5vw, 5rem); position: relative; min-height: 100vh; min-height: 100svh; background: #0F2E25; color: #F1F3EE; }
+.gateway--media .gw-head { position: absolute; z-index: 3; inset: 0 0 auto 0; padding: var(--s5) var(--gw-pad) 0; pointer-events: none; }
+.gateway--media .gw-logo { pointer-events: auto; color: #F3F4F2; }
+.gateway--media .gw-logo .un-logo { height: 1.9rem; }
+.gateway--media .un-tile { fill: var(--un-paper); }
+.gateway--media .un-glyph { fill: var(--un-ink); }
+.gateway--media .un-word { fill: var(--un-paper); }
+.gateway--media .gw-main { display: block; padding: 0; }
+.gw-split { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; min-height: 100svh; }
+.gw-door { position: relative; isolation: isolate; display: flex; flex-direction: column; justify-content: flex-end; min-height: 100vh; min-height: 100svh; overflow: hidden; color: #F2EFE9; }
+.gw-door--un { --veil: 15 46 37; --gw-muted: #A9BCB2; --gw-mark: #E8A77B; background: #0F2E25; }
+.gw-door--cj { --veil: 5 27 39; --gw-muted: #A9B8BE; --gw-mark: #D4B98C; background: #051B27; }
+.gw-door + .gw-door { border-left: 1px solid rgb(241 243 238 / .22); }
+.gw-door .veil {
+  background: linear-gradient(to bottom, rgb(var(--veil) / .7) 0%, rgb(var(--veil) / .32) 20%, rgb(var(--veil) / .3) 50%, rgb(var(--veil) / .55) 72%, rgb(var(--veil) / .8) 100%);
+  transition: opacity .6s ease;
+}
+.gw-door:hover .veil, .gw-door:focus-visible .veil { opacity: .84; }
+.gw-door:focus-visible { outline: 2px solid var(--gw-mark); outline-offset: -8px; }
+.gw-door-text {
+  position: relative; z-index: 1;
+  padding: calc(var(--s9) + var(--s4)) var(--gw-pad) calc(var(--s8) + var(--s5));
+  background: linear-gradient(to bottom, rgb(var(--veil) / 0) 0, rgb(var(--veil)) var(--s9));
+}
+.gw-door-text .label { color: var(--gw-muted); }
+.gw-door-text .label b { color: var(--gw-mark); }
+.gateway--media .gw-name { display: block; margin-top: var(--s4); color: #F2EFE9; font-size: clamp(2.6rem, 1.4rem + 3.4vw, 4.75rem); }
+.gateway--media .gw-text { max-width: 30em; margin-top: var(--s4); color: #F2EFE9; }
+.gateway--media .gw-go { margin-top: var(--s6); padding-top: 0; color: #F2EFE9; }
+.gateway--media .gw-door:hover .gw-name, .gateway--media .gw-door:hover .gw-go, .gateway--media .gw-door:focus-visible .gw-name, .gateway--media .gw-door:focus-visible .gw-go { color: #F2EFE9; }
+.gw-door:hover .gw-go .arr, .gw-door:focus-visible .gw-go .arr { transform: translate(3px, -3px); }
+.gateway--media .gw-foot { position: absolute; z-index: 2; left: 0; bottom: 0; padding: var(--s5) var(--gw-pad); color: #A9BCB2; }
+.gateway--media .media-toggle { right: var(--gw-pad); bottom: var(--s4); }
+@media (max-width: 720px) {
+  .gw-split { grid-template-columns: 1fr; min-height: 0; }
+  .gw-door { min-height: 50vh; min-height: 50svh; }
+  .gw-door + .gw-door { border-left: 0; border-top: 1px solid rgb(241 243 238 / .22); }
+  .gw-door--un .gw-door-text { padding-bottom: var(--s7); }
+  .gw-door-text { padding-top: calc(var(--s8) + var(--s4)); background: linear-gradient(to bottom, rgb(var(--veil) / 0) 0, rgb(var(--veil)) var(--s8)); }
+}
