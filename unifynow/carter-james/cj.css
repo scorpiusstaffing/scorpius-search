@@ -12,28 +12,16 @@
 .foot-brand .logo { font-size: 1.5rem; }
 @media (max-width: 720px) { .nav-logo .logo { font-size: 1.0625rem; } }
 
-/* ---------- The line: a hairline with one step ---------- */
-.line { position: relative; height: 11px; color: var(--ink); --step: 16%; }
-.band-ink .line { color: var(--line-on-ink); }
-.line i { position: absolute; display: block; }
-.line i:nth-child(1) { left: 0; bottom: 0; width: var(--step); height: 1px; background: currentColor; transform-origin: left; }
-.line i:nth-child(2) { left: var(--step); bottom: 0; width: 11px; height: 11px; background: linear-gradient(to bottom right, transparent calc(50% - .55px), currentColor calc(50% - .55px), currentColor calc(50% + .55px), transparent calc(50% + .55px)); }
-.line i:nth-child(3) { left: calc(var(--step) + 11px); right: 0; top: 0; height: 1px; background: currentColor; transform-origin: left; }
-.js:not(.static) .sec-head[data-r] .line i:nth-child(1) { transform: scaleX(0); transition: transform .45s var(--ease); }
-.js:not(.static) .sec-head[data-r] .line i:nth-child(2) { opacity: 0; transition: opacity .1s linear .42s; }
-.js:not(.static) .sec-head[data-r] .line i:nth-child(3) { transform: scaleX(0); transition: transform .7s var(--ease) .48s; }
-.js:not(.static) .sec-head[data-r].in .line i { transform: none; opacity: 1; }
+/* ---------- Hairlines: one straight brass line opens every section ---------- */
+.brand-cj .sec-head .rule { background: var(--line); }
 
-/* ---------- The narrowing, as a detail ---------- */
-.nw { font-stretch: 86%; }
+/* ---------- One width for every heading ---------- */
+.nw { font-stretch: inherit; }
 .h2 .nw, .contact-h .nw { display: block; }
 .hero-h span:not(.vh) { display: block; }
-.w1 { font-stretch: 114%; }
-.w2 { font-stretch: 100%; }
-.w3 { font-stretch: 86%; }
+.w1, .w2, .w3 { font-stretch: inherit; }
 
 /* ---------- Hero ---------- */
-.hero-foot .line { --step: 8%; }
 .hero-roles { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s5); padding-top: var(--s4); max-width: 58rem; font-family: var(--sans); font-weight: 500; font-stretch: 92%; font-size: var(--fs-label); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .hero-roles li { white-space: nowrap; }
 #candidates .split > .h2 { grid-column: 1 / 8; }
@@ -44,39 +32,40 @@
 .facts dd { margin-top: .6rem; font-family: var(--sans); font-weight: 500; font-size: var(--fs-body); line-height: 1.45; max-width: 18em; }
 .stall { margin-top: var(--sec); }
 .stall .h3 { margin-top: var(--s4); max-width: 18em; font-size: var(--fs-lede); }
-.stall-list { border-top: 1px solid var(--ink); max-width: var(--measure); }
+.stall-list { border-top: 1px solid var(--line); max-width: var(--measure); }
 .stall-list li { display: grid; grid-template-columns: 1.75rem 1fr; align-items: baseline; padding: .9rem 0 .85rem; border-bottom: 1px solid var(--line); font-style: italic; font-size: var(--fs-lede); line-height: 1.35; }
 .x { width: 10px; height: 10px; color: var(--accent); align-self: center; }
 .stall-fix { margin-top: var(--s5); font-family: var(--sans); font-weight: 600; font-size: var(--fs-lede); line-height: 1.25; letter-spacing: -.016em; }
 
 /* ---------- Roles: the verbs narrow down the table ---------- */
-.row-title.verb { font-stretch: var(--w, 100%); }
+.row-title.verb { font-stretch: inherit; }
 
 /* ---------- Companies ---------- */
 .stat-n { font-family: var(--display); font-weight: 600; font-stretch: 90%; font-size: var(--fs-h2); line-height: 1.05; letter-spacing: -.025em; }
 .stat .label { margin-top: var(--s3); }
 
 /* ---------- People: two names, one treatment ---------- */
-.signers { margin-top: var(--block); display: grid; grid-template-columns: 1fr 1fr; column-gap: var(--gap); row-gap: var(--s7); }
-.signer-n { font-family: var(--display); font-weight: 600; font-size: clamp(1.9rem, 1.3rem + 2.1vw, 3rem); line-height: 1.05; letter-spacing: -.026em; }
-.sigline { position: relative; height: 1px; margin-top: var(--s5); color: var(--ink); }
+.signers { margin-top: var(--s6); display: grid; grid-template-columns: 1fr 1fr; column-gap: var(--gap); row-gap: var(--s6); border-top: 1px solid var(--line); }
+.signer { padding-top: var(--s4); }
+.signer-n { font-family: var(--display); font-weight: 600; font-size: var(--fs-h2); line-height: 1.05; letter-spacing: -.026em; }
+.sigline { position: relative; height: 1px; margin-top: var(--s4); color: var(--line); }
+.signer .sigline { display: none; }
 .band-ink .sigline { color: var(--line-on-ink); }
 .sigline i { position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: currentColor; }
-.signer-role { margin-top: var(--s4); color: var(--ink); }
+.signer-role { margin-top: var(--s2); color: var(--muted); }
 @media (max-width: 720px) { .signers { grid-template-columns: 1fr; } }
 
 /* ---------- Contact ---------- */
 .contact { padding-bottom: var(--block); }
 .contact-h { font-family: var(--display); font-weight: 600; font-stretch: 104%; font-size: var(--fs-h1); line-height: 1.04; letter-spacing: -.028em; }
-.contact-sign { margin-top: var(--block); }
-.contact-row { display: flex; justify-content: space-between; align-items: center; gap: var(--s5) var(--s6); flex-wrap: wrap; margin-top: var(--s5); }
+.contact-row { display: flex; align-items: center; gap: var(--s5) var(--s6); flex-wrap: wrap; margin-top: var(--s6); }
 .contact-row .lede { max-width: 24em; }
 
 /* ---------- Legal pages ---------- */
-.doc { padding-top: calc(var(--nav-h) + var(--sec)); padding-bottom: var(--block); }
-.band-ink .doc-draft { border-color: var(--line); color: var(--on-ink); }
-.doc-draft { display: inline-block; margin-top: var(--s5); padding: .7em 1em .65em; border: 1px solid var(--line); color: var(--ink); }
-.doc-body { border-top: 1px solid var(--ink); }
+.doc { padding-top: calc(var(--nav-h) + var(--s7)); padding-bottom: var(--block); }
+
+.doc-draft { margin-top: calc(-1 * var(--block) + var(--s3)); margin-bottom: var(--block); color: var(--muted-on-ink); }
+.doc-body { border-top: 1px solid var(--line); }
 .doc-body section { padding: var(--s5) 0 calc(var(--s5) + .2rem); border-bottom: 1px solid var(--line); display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); column-gap: var(--gap); row-gap: var(--s3); }
 .doc-body p { max-width: var(--measure); }
 .todo { color: var(--muted); font-style: italic; }
@@ -87,3 +76,9 @@
 .band-ink .stat-n { color: var(--on-ink); }
 .cta-row .label + .h3 { margin-top: 0; }
 .cta-row .label { flex-basis: 100%; }
+
+/* Serif on petrol: a touch heavier so it does not thin out */
+.brand-cj .band-ink p:not(.label):not(.h3):not(.small) { font-weight: 450; }
+.brand-cj .nav > .nav-group { display: none; }
+.brand-cj .menu-foot .nav-group .un-logo { height: 1.25rem; }
+.contact-row { justify-content: flex-start; }

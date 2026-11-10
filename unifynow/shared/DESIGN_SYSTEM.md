@@ -28,7 +28,7 @@ with the alternatives):
 | `--accent-on-ink` on the band | `#E8A77B` (7.1:1) | `#D4B98C` (9.3:1) |
 | `--line-on-ink` hairlines on the band | paper at 22% | brass `#B59977` |
 
-Rules: body text is always `--ink` on `--paper` or `--on-ink` on `--band`, never grey. The accent is a
+Rules: every hairline (rules, row and list separators, card tops, FAQ, footer, signature lines) uses one token per band: `--line` on paper, `--line-on-ink` on the band, never the ink token and never a colour that depends on a reveal state. Body text is always `--ink` on `--paper` or `--on-ink` on `--band`, never grey. The accent is a
 mark, a hover, a focus ring or a single word; never a surface, never a headline. `.band-ink` paints a
 section in `--band` and swaps `--line`, `--muted` and `--accent` to their on-band values; ruled
 components follow. The Unify Now logo keeps its own two colours (`--un-ink #15191B`, `--un-paper #F3F4F2`)

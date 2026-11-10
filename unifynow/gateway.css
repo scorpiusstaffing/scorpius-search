@@ -4,7 +4,7 @@
 .gw-logo { display: inline-block; color: var(--ink); }
 .gw-logo .un-logo { height: 1.75rem; }
 .gw-main { flex: 1; display: flex; align-items: center; padding: var(--s8) var(--gutter); }
-.gw-choice { width: 100%; max-width: var(--max); margin-inline: auto; display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
+.gw-choice { width: 100%; max-width: var(--max); margin-inline: auto; display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .gw-block { display: flex; flex-direction: column; gap: var(--s4); padding: clamp(2rem, 4vw, 3.5rem) clamp(1.5rem, 3.5vw, 3rem) clamp(2.25rem, 4vw, 3.5rem) 0; color: var(--ink); transition: color .25s ease; }
 .gw-block + .gw-block { padding-left: clamp(1.5rem, 3.5vw, 3rem); padding-right: 0; border-left: 1px solid var(--line); }
 .gw-name { font-family: var(--display); font-weight: var(--display-weight); font-size: clamp(2.4rem, 1.5rem + 3.2vw, 4rem); line-height: 1.02; letter-spacing: var(--display-tracking); transition: color .25s ease; }
