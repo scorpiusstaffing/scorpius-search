@@ -1,0 +1,26 @@
+/* Unify Now gateway: one page, two doors. Sits on /shared/system.css. */
+.gateway { min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; }
+.gw-head { padding: var(--s5) var(--gutter) 0; }
+.gw-logo { display: inline-block; color: var(--ink); }
+.gw-logo svg { height: 1.75rem; width: auto; }
+.gw-main { flex: 1; display: flex; align-items: center; padding: var(--s8) var(--gutter); }
+.gw-choice { width: 100%; max-width: var(--max); margin-inline: auto; display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
+.gw-block { display: flex; flex-direction: column; gap: var(--s4); padding: clamp(2rem, 4vw, 3.5rem) clamp(1.5rem, 3.5vw, 3rem) clamp(2.25rem, 4vw, 3.5rem) 0; color: var(--ink); transition: color .25s ease; }
+.gw-block + .gw-block { padding-left: clamp(1.5rem, 3.5vw, 3rem); padding-right: 0; border-left: 1px solid var(--line); }
+.gw-name { font-family: var(--display); font-weight: var(--display-weight); font-size: clamp(2.4rem, 1.5rem + 3.2vw, 4rem); line-height: 1.02; letter-spacing: var(--display-tracking); transition: color .25s ease; }
+.gw-text { max-width: 26em; margin-top: var(--s2); }
+.gw-go { margin-top: auto; padding-top: var(--s5); display: inline-flex; align-items: center; gap: .55em; font-family: var(--sans); font-weight: 600; font-size: var(--fs-small); }
+.gw-go .arr { width: .8em; height: .8em; transition: transform .3s var(--ease); }
+.gw-block:hover .gw-name, .gw-block:focus-visible .gw-name, .gw-block:hover .gw-go, .gw-block:focus-visible .gw-go { color: var(--accent); }
+.gw-block:hover .arr, .gw-block:focus-visible .arr { transform: translate(2px, -2px); }
+.gw-foot { padding: var(--s4) var(--gutter) var(--s5); display: flex; justify-content: space-between; align-items: center; gap: var(--s3) var(--s5); flex-wrap: wrap; font-family: var(--sans); font-size: var(--fs-label); color: var(--muted); }
+.gw-foot nav { display: flex; gap: var(--s5); flex-wrap: wrap; }
+.gw-foot a { border-bottom: 1px solid transparent; transition: color .25s ease, border-color .25s ease; }
+.gw-foot a:hover, .gw-foot a:focus-visible { color: var(--ink); border-bottom-color: currentColor; }
+@media (max-width: 720px) {
+  .gw-main { padding: var(--s6) var(--gutter); align-items: start; }
+  .gw-choice { grid-template-columns: 1fr; }
+  .gw-block { padding: var(--s6) 0; }
+  .gw-block + .gw-block { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
+}
+.gw-links { gap: var(--s4); justify-content: center; align-items: flex-start; }
