@@ -8,12 +8,14 @@
    Nothing here changes a size, colour or spacing token.
    ============================================================= */
 
-/* ---------- Logo: the 01 Optical lockup as inline SVG ---------- */
+/* ---------- Logo: the group lockup from /shared/logo/inline.json (colours in system.css) ---------- */
 .logo { display: inline-flex; align-items: center; color: inherit; }
 .logo-svg { height: 1.9rem; width: auto; }
-.band-ink .logo-svg { --logo-letter: var(--ink); }
 .foot-brand .logo-svg { height: 2.25rem; }
 @media (max-width: 720px) { .nav-logo .logo-svg { height: 1.6rem; } }
+
+/* The site logo is the Unify Now logo already; the group link lives in the menu foot and the footer line */
+.nav > .nav-group { display: none; }
 
 /* ---------- Sub-page opening ---------- */
 .page { padding-top: calc(var(--nav-h) + var(--sec)); padding-bottom: var(--block); }
@@ -63,3 +65,8 @@ select.input { appearance: none; -webkit-appearance: none; background: url("data
 .svc { padding-top: var(--block); border-top: 1px solid var(--line); }
 .svc + .svc { margin-top: var(--block); }
 .svc .h2 { margin-top: var(--s4); }
+
+/* Dark opening band on sub-pages */
+.band-ink .facts > div { border-bottom-color: var(--line); }
+.band-ink .facts dd a { color: var(--on-ink); }
+.band-ink .svc { border-top-color: var(--line); }

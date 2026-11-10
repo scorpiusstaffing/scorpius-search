@@ -2,7 +2,7 @@
 .gateway { min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; }
 .gw-head { padding: var(--s5) var(--gutter) 0; }
 .gw-logo { display: inline-block; color: var(--ink); }
-.gw-logo svg { height: 1.75rem; width: auto; }
+.gw-logo .un-logo { height: 1.75rem; }
 .gw-main { flex: 1; display: flex; align-items: center; padding: var(--s8) var(--gutter); }
 .gw-choice { width: 100%; max-width: var(--max); margin-inline: auto; display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
 .gw-block { display: flex; flex-direction: column; gap: var(--s4); padding: clamp(2rem, 4vw, 3.5rem) clamp(1.5rem, 3.5vw, 3rem) clamp(2.25rem, 4vw, 3.5rem) 0; color: var(--ink); transition: color .25s ease; }
@@ -24,3 +24,9 @@
   .gw-block + .gw-block { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
 }
 .gw-links { gap: var(--s4); justify-content: center; align-items: flex-start; }
+
+/* Each door carries its own brand ink */
+.gw-block--un .gw-name { color: #122A22; }
+.gw-block--cj .gw-name { color: #051B27; }
+.gw-block--un:hover .gw-name, .gw-block--un:focus-visible .gw-name, .gw-block--un:hover .gw-go, .gw-block--un:focus-visible .gw-go { color: #A64A28; }
+.gw-block--cj:hover .gw-name, .gw-block--cj:focus-visible .gw-name, .gw-block--cj:hover .gw-go, .gw-block--cj:focus-visible .gw-go { color: #7A5C33; }

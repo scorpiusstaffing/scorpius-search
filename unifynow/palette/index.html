@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Palettes. Unify Now group</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="/unifynow/shared/system.css">
+<link rel="stylesheet" href="/unifynow/carter-james/cj.css">
+<link rel="icon" type="image/svg+xml" href="/unifynow/favicon.svg">
+<style>
+body { padding: var(--s6) var(--gutter) var(--s9); }
+.sheet-head { max-width: var(--max); margin: 0 auto var(--s7); }
+.sheet-head p { max-width: var(--measure); margin-top: var(--s3); }
+.pal { max-width: var(--max); margin: 0 auto var(--s8); padding: var(--s6); background: var(--paper); color: var(--ink); border: 1px solid rgba(0,0,0,.12); }
+.pal-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s2) var(--s6); margin-bottom: var(--s5); }
+.pal-head .small { flex-basis: 100%; }
+.swatches { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--gap); margin-bottom: var(--s6); }
+.sw i { display: block; height: 56px; border: 1px solid rgba(0,0,0,.08); }
+.sw b { display: block; margin-top: .5rem; font-family: var(--sans); font-size: var(--fs-small); }
+.sw span { font-family: var(--sans); font-size: var(--fs-label); color: var(--muted); letter-spacing: .04em; }
+.demo { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); }
+.demo-hero, .demo-band { padding: var(--s6); }
+.demo-hero { border: 1px solid rgba(0,0,0,.1); }
+.mini-h1 { font-size: clamp(1.8rem, 1.2rem + 1.6vw, 2.6rem); margin: var(--s3) 0; }
+.mini-h1 span { display: block; }
+.demo .h2 { font-size: clamp(1.5rem, 1.1rem + 1.2vw, 2.1rem); margin: var(--s3) 0; }
+.demo .lede { font-size: var(--fs-body); }
+.demo .actions { margin-top: var(--s5); }
+.pal.alt { opacity: .96; }
+@media (max-width: 900px) { .swatches { grid-template-columns: repeat(3, minmax(0, 1fr)); } .demo { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body class="js static">
+<header class="sheet-head">
+  <p class="label">Unify Now group · colour</p>
+  <h1 class="h2" style="margin-top: var(--s3)">One palette per brand.</h1>
+  <p>Same layout and components, two clearly different colour families. Each brand shows the recommended palette and one alternative, applied to a light opening, a dark band and the buttons. All text pairs meet WCAG AA (4.5:1 or better); the ratios are printed under each name.</p>
+</header>
+
+<section class="pal brand-cj " style="--paper:#F2EFE9;--paper-2:#E6E1D7;--ink:#051B27;--band:#051B27;--on-ink:#F2EFE9;--muted:#44565F;--muted-on-ink:#A9B8BE;--line-on-ink:#B59977;--accent:#7A5C33;--accent-on-ink:#D4B98C">
+  <div class="pal-head"><p class="label">Carter James · Recommended</p><h2 class="h3">Petrol and gold</h2><p class="small muted">Ink on ground 15.3:1 · Accent on ground 5.4:1 · Text on band 15.3:1 · Accent on band 9.3:1 · Captions 6.7:1 and 8.6:1</p></div>
+  <div class="swatches"><div class="sw"><i style="background:#F2EFE9"></i><b>Ground</b><span>#F2EFE9</span></div><div class="sw"><i style="background:#051B27"></i><b>Ink</b><span>#051B27</span></div><div class="sw"><i style="background:#051B27"></i><b>Dark band</b><span>#051B27</span></div><div class="sw"><i style="background:#7A5C33"></i><b>Accent on light</b><span>#7A5C33</span></div><div class="sw"><i style="background:#D4B98C"></i><b>Accent on dark</b><span>#D4B98C</span></div><div class="sw"><i style="background:#44565F"></i><b>Muted</b><span>#44565F</span></div></div>
+  <div class="demo">
+    <div class="demo-hero"><p class="label">Search firm for SaaS Sales roles</p><p class="h1 mini-h1"><span class="w1">A wide market.</span><span class="w2">A short list.</span><span class="w3">One hire.</span></p><p class="lede">Carter James is a specialist search firm for SaaS Sales roles.</p><div class="actions"><a class="btn" href="#"><span>Book a meeting</span></a><a class="tlink" href="#"><span>See the roles</span></a></div></div>
+    <div class="demo-band band-ink"><p class="label">For companies</p><p class="h2">Your next sales hire <span class="nw">won’t take months.</span></p><p class="lede">Schedule a meeting to talk through a role.</p><div class="actions"><a class="btn" href="#"><span>Book a meeting</span></a><a class="tlink" href="#"><span>Questions</span></a></div><p class="small" style="margin-top:var(--s5)">Caption in the muted tone. <a class="link" href="#">A link</a>, a <span style="color:var(--accent)">mark</span> in the accent.</p></div>
+  </div>
+</section>
+<section class="pal brand-cj alt" style="--paper:#F3F4F2;--paper-2:#E8EAE7;--ink:#051B27;--band:#051B27;--on-ink:#F3F4F2;--muted:#44565F;--muted-on-ink:#A9B8BE;--line-on-ink:#B59977;--accent:#D9401D;--accent-on-ink:#FF6A48">
+  <div class="pal-head"><p class="label">Carter James · Alternative</p><h2 class="h3">Petrol and coral</h2><p class="small muted">Ink on ground 16.0:1 · Accent on ground 4.0:1 · Text on band 16.0:1 · Accent on band 6.2:1 · Captions 6.9:1 and 8.6:1</p></div>
+  <div class="swatches"><div class="sw"><i style="background:#F3F4F2"></i><b>Ground</b><span>#F3F4F2</span></div><div class="sw"><i style="background:#051B27"></i><b>Ink</b><span>#051B27</span></div><div class="sw"><i style="background:#051B27"></i><b>Dark band</b><span>#051B27</span></div><div class="sw"><i style="background:#D9401D"></i><b>Accent on light</b><span>#D9401D</span></div><div class="sw"><i style="background:#FF6A48"></i><b>Accent on dark</b><span>#FF6A48</span></div><div class="sw"><i style="background:#44565F"></i><b>Muted</b><span>#44565F</span></div></div>
+  <div class="demo">
+    <div class="demo-hero"><p class="label">Search firm for SaaS Sales roles</p><p class="h1 mini-h1"><span class="w1">A wide market.</span><span class="w2">A short list.</span><span class="w3">One hire.</span></p><p class="lede">Carter James is a specialist search firm for SaaS Sales roles.</p><div class="actions"><a class="btn" href="#"><span>Book a meeting</span></a><a class="tlink" href="#"><span>See the roles</span></a></div></div>
+    <div class="demo-band band-ink"><p class="label">For companies</p><p class="h2">Your next sales hire <span class="nw">won’t take months.</span></p><p class="lede">Schedule a meeting to talk through a role.</p><div class="actions"><a class="btn" href="#"><span>Book a meeting</span></a><a class="tlink" href="#"><span>Questions</span></a></div><p class="small" style="margin-top:var(--s5)">Caption in the muted tone. <a class="link" href="#">A link</a>, a <span style="color:var(--accent)">mark</span> in the accent.</p></div>
+  </div>
+</section>
+<section class="pal " style="--paper:#F1F3EE;--paper-2:#E4E8E1;--ink:#122A22;--band:#0F2E25;--on-ink:#F1F3EE;--muted:#4F6159;--muted-on-ink:#A9BCB2;--line-on-ink:rgba(241, 243, 238, .22);--accent:#A64A28;--accent-on-ink:#E8A77B">
+  <div class="pal-head"><p class="label">Unify Now · Recommended</p><h2 class="h3">Deep green and copper</h2><p class="small muted">Ink on ground 13.6:1 · Accent on ground 5.2:1 · Text on band 13.1:1 · Accent on band 7.1:1 · Captions 5.9:1 and 7.3:1</p></div>
+  <div class="swatches"><div class="sw"><i style="background:#F1F3EE"></i><b>Ground</b><span>#F1F3EE</span></div><div class="sw"><i style="background:#122A22"></i><b>Ink</b><span>#122A22</span></div><div class="sw"><i style="background:#0F2E25"></i><b>Dark band</b><span>#0F2E25</span></div><div class="sw"><i style="background:#A64A28"></i><b>Accent on light</b><span>#A64A28</span></div><div class="sw"><i style="background:#E8A77B"></i><b>Accent on dark</b><span>#E8A77B</span></div><div class="sw"><i style="background:#4F6159"></i><b>Muted</b><span>#4F6159</span></div></div>
+  <div class="demo">
+    <div class="demo-hero"><p class="label">Executive search agency</p><p class="h1 mini-h1">Brings talent and great employers together.</p><p class="lede">Have a look at the overview of the available vacancies at our exclusive clients.</p><div class="actions"><a class="btn" href="#"><span>Your career</span></a><a class="tlink" href="#"><span>Your talent</span></a></div></div>
+    <div class="demo-band band-ink"><p class="label">Your talent</p><p class="h2">We conduct business with more than <span class="tnum">20</span> agencies and hundreds of professionals on a weekly basis.</p><p class="lede">Leave your details for us to call you.</p><div class="actions"><a class="btn" href="#"><span>Contact</span></a><a class="tlink" href="#"><span>info@unifynow.nl</span></a></div><p class="small" style="margin-top:var(--s5)">Caption in the muted tone. <a class="link" href="#">A link</a>, a <span style="color:var(--accent)">mark</span> in the accent.</p></div>
+  </div>
+</section>
+<section class="pal alt" style="--paper:#F4F1F3;--paper-2:#E8E2E6;--ink:#2A1B2C;--band:#2B1A2E;--on-ink:#F4F1F3;--muted:#5E5361;--muted-on-ink:#B9AEBB;--line-on-ink:rgba(244, 241, 243, .22);--accent:#8A5A12;--accent-on-ink:#E2B35B">
+  <div class="pal-head"><p class="label">Unify Now · Alternative</p><h2 class="h3">Aubergine and ochre</h2><p class="small muted">Ink on ground 14.5:1 · Accent on ground 5.3:1 · Text on band 14.5:1 · Accent on band 8.4:1 · Captions 6.5:1 and 7.6:1</p></div>
+  <div class="swatches"><div class="sw"><i style="background:#F4F1F3"></i><b>Ground</b><span>#F4F1F3</span></div><div class="sw"><i style="background:#2A1B2C"></i><b>Ink</b><span>#2A1B2C</span></div><div class="sw"><i style="background:#2B1A2E"></i><b>Dark band</b><span>#2B1A2E</span></div><div class="sw"><i style="background:#8A5A12"></i><b>Accent on light</b><span>#8A5A12</span></div><div class="sw"><i style="background:#E2B35B"></i><b>Accent on dark</b><span>#E2B35B</span></div><div class="sw"><i style="background:#5E5361"></i><b>Muted</b><span>#5E5361</span></div></div>
+  <div class="demo">
+    <div class="demo-hero"><p class="label">Executive search agency</p><p class="h1 mini-h1">Brings talent and great employers together.</p><p class="lede">Have a look at the overview of the available vacancies at our exclusive clients.</p><div class="actions"><a class="btn" href="#"><span>Your career</span></a><a class="tlink" href="#"><span>Your talent</span></a></div></div>
+    <div class="demo-band band-ink"><p class="label">Your talent</p><p class="h2">We conduct business with more than <span class="tnum">20</span> agencies and hundreds of professionals on a weekly basis.</p><p class="lede">Leave your details for us to call you.</p><div class="actions"><a class="btn" href="#"><span>Contact</span></a><a class="tlink" href="#"><span>info@unifynow.nl</span></a></div><p class="small" style="margin-top:var(--s5)">Caption in the muted tone. <a class="link" href="#">A link</a>, a <span style="color:var(--accent)">mark</span> in the accent.</p></div>
+  </div>
+</section>
+</body>
+</html>

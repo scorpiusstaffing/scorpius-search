@@ -11,28 +11,28 @@ quality shown through spacing, alignment and typographic detail rather than effe
 
 ## 1. Palette
 
-Shared neutrals (both brands):
+One colour family per brand, set by a class on `<body>` (`.brand-cj`; Unify Now is the default). The
+layout and components are shared; the colours are not. Chosen palettes (see `/palette/` for the sheet
+with the alternatives):
 
-| Token | Value | Use |
+| Token | Unify Now: Deep green and copper | Carter James: Petrol and gold |
 |---|---|---|
-| `--paper` | `#F3F4F2` | page ground |
-| `--paper-2` | `#E8EAE7` | a second light tone, rarely |
-| `--line` | ink at 18% | hairlines on paper |
-| `--muted` | `#5B6367` (UN) / `#44565F` (CJ) | labels and captions only, never body text; both at least 5.6:1 on paper |
+| `--paper` light ground | `#F1F3EE` | `#F2EFE9` |
+| `--paper-2` second light tone | `#E4E8E1` | `#E6E1D7` |
+| `--ink` text on light | `#122A22` | `#051B27` |
+| `--band` dark band | `#0F2E25` | `#051B27` |
+| `--on-ink` text on the band | `#F1F3EE` | `#F2EFE9` |
+| `--muted` captions on light | `#4F6159` (5.9:1) | `#44565F` (6.7:1) |
+| `--muted-on-ink` captions on the band | `#A9BCB2` (7.3:1) | `#A9B8BE` (8.6:1) |
+| `--accent` on light | `#A64A28` (5.2:1) | `#7A5C33` (5.4:1) |
+| `--accent-on-ink` on the band | `#E8A77B` (7.1:1) | `#D4B98C` (9.3:1) |
+| `--line-on-ink` hairlines on the band | paper at 22% | brass `#B59977` |
 
-One ink and one accent per brand, set by a class on `<body>`:
-
-| | Unify Now (default) | Carter James (`.brand-cj`) |
-|---|---|---|
-| `--ink` | `#15191B` | `#051B27` petrol |
-| `--accent` | `#2440D8` blue | `#D9401D` coral |
-| `--accent-on-ink` | `#9FB0FF` | `#FF6A48` |
-| `--line-on-ink` | paper at 22% | `#B59977` brass |
-
-Rules: body text is always `--ink` on `--paper` or `--on-ink` on `--ink`, never grey. The accent is a
-mark, a hover, a focus ring or a single word; never a surface, never a headline. Dark bands (`.band-ink`)
-are used for rhythm, at most two or three per page, and they swap `--line`, `--muted` and `--accent` to
-their on-ink values automatically.
+Rules: body text is always `--ink` on `--paper` or `--on-ink` on `--band`, never grey. The accent is a
+mark, a hover, a focus ring or a single word; never a surface, never a headline. `.band-ink` paints a
+section in `--band` and swaps `--line`, `--muted` and `--accent` to their on-band values; ruled
+components follow. The Unify Now logo keeps its own two colours (`--un-ink #15191B`, `--un-paper #F3F4F2`)
+on both brands.
 
 ## 2. Type
 
@@ -100,20 +100,52 @@ library, no custom cursor, no page transitions. With `prefers-reduced-motion` or
 JavaScript everything is simply there. The head of every page carries the small inline script that adds
 `js` and `static` classes.
 
-## 6. Header pattern and the group
+## 6. The Unify Now logo, one and the same everywhere
+
+The logo is the "01 Round" tile mark with the tracked capitals UNIFY NOW. The files sit in
+`/shared/logo/` (`unifynow-horizontal.svg`, `unifynow-horizontal-light.svg`, `unifynow-mark.svg`; a later
+swap is a copy under the same names) and the inline markup every page uses is generated from them into
+`/shared/logo/inline.json` (`lockup` and `mark`). Never draw the glyph without its tile.
+
+- Markup: `<svg class="un-logo" ...>` (lockup) or `<svg class="un-logo un-logo--mark" ...>` (mark), with
+  `.un-tile`, `.un-glyph` and `.un-word` inside. Colours come only from `system.css`: on paper a dark
+  tile `#15191B` with light letters and a dark wordmark; on `.band-ink` a light tile `#F3F4F2` with dark
+  letters and a light wordmark. These two Unify Now colours stay fixed on both brands.
+- Where: the gateway header, the nav group link on both sites (lockup from 721px, mark alone below), the
+  mobile menu foot, the rec2rec nav and footer brand, the footer line "Part of the Unify Now group"
+  (mark plus sentence), the favicons of the gateway and rec2rec, the OG images of the gateway and
+  rec2rec. Carter James keeps its own mark for its favicon and OG image; the Unify Now logo appears on
+  its pages only in the group link and the footer line.
+
+## 7. Band rhythm
+
+Both sites alternate light paper and dark ink bands so a page never shows more than two light sections
+in a row, and both open and close dark:
+
+- Carter James home: dark hero, light what we do, dark roles, light how we work, dark companies with the
+  quote, light candidates and people, dark questions, dark contact, dark footer.
+- Rec2rec home: dark hero, light purpose and vacancies, dark services, dark contact, dark footer.
+- Every sub-page (vacancies, a vacancy, your talent, apply, contact, legal, 404): dark opening band
+  (`.page.band-ink` or `.hero.band-ink`), light body, dark footer.
+
+`.band-ink` swaps `--muted`, `--line` and `--accent` to their on-ink values and the ruled components
+(rows, cards, FAQ, definition lists) follow. Contrast on dark: text `#F3F4F2` on ink or petrol above 14:1,
+muted captions above 8:1, accent marks above 5:1.
+
+## 8. Header pattern and the group
 
 Every site in the group starts its nav with `.nav-group`: the Unify Now mark and the word "Unify Now",
 linking to `/`. The footer base repeats it as "Part of the Unify Now group". The gateway itself shows only
 the Unify Now logo, two doors and a one-line legal footer.
 
-## 7. Accessibility and preview
+## 9. Accessibility and preview
 
 Skip link, `:focus-visible` ring in the accent, AA contrast on every text style, `aria-current` on the
 current nav item, native `details` for accordions, `aria-label` on logo links, labels above form fields.
 Every page carries `<meta name="robots" content="noindex, nofollow">` while the tree is a private
 preview, and `/robots.txt` disallows all.
 
-## 8. Building the rec2rec site on this system
+## 10. Building the rec2rec site on this system
 
 1. Start every page with the same head as `/carter-james/index.html`: preload the two brand fonts
    (Bricolage Grotesque and Instrument Sans), the inline `js`/`static` script, `/shared/system.css`, then

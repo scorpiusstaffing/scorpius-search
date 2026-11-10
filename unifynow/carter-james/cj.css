@@ -1,6 +1,6 @@
 /* =============================================================
    CARTER JAMES: brand layer on top of /shared/system.css
-   Petrol ink, brass hairlines on petrol, coral as a mark.
+   Petrol ink on warm paper, brass hairlines on petrol, gold as a mark.
    The one brand device: a hairline with a single diagonal step
    that climbs through the page; the closing phrase of a
    headline set a little narrower.
@@ -73,10 +73,17 @@
 .contact-row .lede { max-width: 24em; }
 
 /* ---------- Legal pages ---------- */
-.doc { padding-top: calc(var(--nav-h) + var(--sec)); min-height: 80vh; }
+.doc { padding-top: calc(var(--nav-h) + var(--sec)); padding-bottom: var(--block); }
+.band-ink .doc-draft { border-color: var(--line); color: var(--on-ink); }
 .doc-draft { display: inline-block; margin-top: var(--s5); padding: .7em 1em .65em; border: 1px solid var(--line); color: var(--ink); }
 .doc-body { border-top: 1px solid var(--ink); }
 .doc-body section { padding: var(--s5) 0 calc(var(--s5) + .2rem); border-bottom: 1px solid var(--line); display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); column-gap: var(--gap); row-gap: var(--s3); }
 .doc-body p { max-width: var(--measure); }
 .todo { color: var(--muted); font-style: italic; }
 @media (max-width: 720px) { .doc-body section { grid-template-columns: 1fr; } }
+
+/* Dark bands */
+.band-ink .signer-role { color: var(--on-ink); }
+.band-ink .stat-n { color: var(--on-ink); }
+.cta-row .label + .h3 { margin-top: 0; }
+.cta-row .label { flex-basis: 100%; }
