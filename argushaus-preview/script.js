@@ -32,10 +32,9 @@
     if (wordmark) wordmark.classList.add('is-visible');
   });
 
-  /* Background loop. The <source> elements carry data-src and only get a src here,
-     and only once the frame comes near the screen: with reduced motion or without
-     script nothing is fetched and the still stays. Paused while off screen; one
-     pause and play control per video, remembered for the visit. */
+  /* Opening film. The <source> elements carry data-src and only get a src here:
+     with reduced motion or without script nothing is fetched and the still stays.
+     Paused while off screen; one pause and play control, remembered for the visit. */
   const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.querySelectorAll('[data-video]').forEach(frame => {
     const v = frame.querySelector('video');
@@ -73,9 +72,7 @@
     v.addEventListener('playing', () => { frame.classList.add('is-playing'); sync(); });
     v.addEventListener('pause', sync);
 
-    new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting) attach();
-    }, { threshold: 0.05 }).observe(frame);
+    attach();                           /* the film is the first screen: load it straight away */
 
     new IntersectionObserver(entries => {
       onScreen = entries[0].isIntersecting;
@@ -91,16 +88,27 @@
   });
 
   /* Marginalia over a picture: toggle the cream plate while they overlap a frame. */
+  /* Over the dark opening screen (and the upper half of its fade) they turn cream. */
   const marks = Array.from(document.querySelectorAll('.fixtop > *, .fixbottom > *, .counter'));
   const frames = Array.from(document.querySelectorAll('.media'));
-  if (marks.length && frames.length) {
+  const hero = document.querySelector('.hero');
+  if (marks.length) {
     let ticking = false;
     const check = () => {
       ticking = false;
       const boxes = frames.map(f => f.getBoundingClientRect());
+      let dark = null;
+      if (hero) {
+        const h = hero.getBoundingClientRect();
+        const tail = parseFloat(getComputedStyle(hero, '::after').height) || 0;
+        dark = { top: h.top, bottom: h.bottom + tail * 0.45 };
+      }
       marks.forEach(m => {
         const r = m.getBoundingClientRect();
-        const over = boxes.some(b => r.right > b.left && r.left < b.right && r.bottom > b.top && r.top < b.bottom);
+        const mid = (r.top + r.bottom) / 2;
+        const onDark = !!dark && mid > dark.top && mid < dark.bottom;
+        const over = !onDark && boxes.some(b => r.right > b.left && r.left < b.right && r.bottom > b.top && r.top < b.bottom);
+        m.classList.toggle('on-dark', onDark);
         m.classList.toggle('over-media', over);
       });
     };

@@ -41,7 +41,20 @@
 <main id="top">
 
   <!-- 01 — HERO -->
-  <section class="screen hero" data-index="01">
+  <section class="screen hero" data-index="01" data-video>
+    <div class="hero-film" aria-hidden="true">
+      <picture>
+        <source media="(max-width: 640px)" type="image/webp" srcset="/argushaus-preview/assets/media/ah-hero-poster-phone-540.webp 540w, /argushaus-preview/assets/media/ah-hero-poster-phone-720.webp 720w" sizes="100vw" width="720" height="1152" />
+        <source media="(max-width: 640px)" srcset="/argushaus-preview/assets/media/ah-hero-poster-phone-540.jpg 540w, /argushaus-preview/assets/media/ah-hero-poster-phone-720.jpg 720w" sizes="100vw" width="720" height="1152" />
+        <source type="image/webp" srcset="/argushaus-preview/assets/media/ah-hero-poster-1280.webp 1280w, /argushaus-preview/assets/media/ah-hero-poster-1920.webp 1920w" sizes="100vw" />
+        <img src="/argushaus-preview/assets/media/ah-hero-poster-1920.jpg" srcset="/argushaus-preview/assets/media/ah-hero-poster-1280.jpg 1280w, /argushaus-preview/assets/media/ah-hero-poster-1920.jpg 1920w" sizes="100vw" width="1920" height="972" alt="" fetchpriority="high" decoding="async" />
+      </picture>
+      <video muted autoplay loop playsinline preload="none" tabindex="-1">
+        <source data-src="/argushaus-preview/assets/media/ah-hero-phone.mp4" data-media="(max-width: 640px)" type="video/mp4" />
+        <source data-src="/argushaus-preview/assets/media/ah-hero-1920.mp4" type="video/mp4" />
+      </video>
+      <span class="hero-veil"></span>
+    </div>
     <div class="screen-inner">
       <h1 class="wordmark">Argushaus<span class="red-block">.</span></h1>
       <p class="wordmark-tag">Senior cybersecurity talent</p>
@@ -58,24 +71,8 @@
       <span>Scroll</span>
       <span class="cue-line"></span>
     </div>
+    <button class="media-toggle hero-toggle" type="button" aria-label="Pause video" hidden></button>
   </section>
-
-  <!-- Media band: graded loop, sources attached by script -->
-  <div class="media-band">
-    <figure class="media media--band" data-video>
-      <picture>
-        <source media="(max-width: 640px)" type="image/webp" srcset="/argushaus-preview/assets/media/ah-hero-poster-phone-720.webp 720w, /argushaus-preview/assets/media/ah-hero-poster-phone-1080.webp 1080w" sizes="100vw" width="1080" height="720" />
-        <source media="(max-width: 640px)" srcset="/argushaus-preview/assets/media/ah-hero-poster-phone-720.jpg 720w, /argushaus-preview/assets/media/ah-hero-poster-phone-1080.jpg 1080w" sizes="100vw" width="1080" height="720" />
-        <source type="image/webp" srcset="/argushaus-preview/assets/media/ah-hero-poster-960.webp 960w, /argushaus-preview/assets/media/ah-hero-poster-1920.webp 1920w" sizes="(min-width: 1340px) 1200px, 90vw" />
-        <img class="media-still" src="/argushaus-preview/assets/media/ah-hero-poster-1920.jpg" srcset="/argushaus-preview/assets/media/ah-hero-poster-960.jpg 960w, /argushaus-preview/assets/media/ah-hero-poster-1920.jpg 1920w" sizes="(min-width: 1340px) 1200px, 90vw" width="1920" height="960" alt="Two colleagues reviewing a tablet together by a bright window" loading="lazy" decoding="async" />
-      </picture>
-      <video class="media-video" muted autoplay loop playsinline preload="none" aria-hidden="true" tabindex="-1">
-        <source data-src="/argushaus-preview/assets/media/ah-hero-phone.mp4" data-media="(max-width: 640px)" type="video/mp4" />
-        <source data-src="/argushaus-preview/assets/media/ah-hero-1920.mp4" type="video/mp4" />
-      </video>
-      <button class="media-toggle" type="button" aria-label="Pause video" hidden></button>
-    </figure>
-  </div>
 
   <!-- 02 — FOR CONSULTANCIES -->
   <section class="screen" data-index="02" id="clients">
@@ -171,7 +168,7 @@
         <source media="(max-width: 640px)" type="image/webp" srcset="/argushaus-preview/assets/media/ah-senior-phone-720.webp 720w, /argushaus-preview/assets/media/ah-senior-phone-1080.webp 1080w" sizes="100vw" width="1080" height="720" />
         <source media="(max-width: 640px)" srcset="/argushaus-preview/assets/media/ah-senior-phone-720.jpg 720w, /argushaus-preview/assets/media/ah-senior-phone-1080.jpg 1080w" sizes="100vw" width="1080" height="720" />
         <source type="image/webp" srcset="/argushaus-preview/assets/media/ah-senior-960.webp 960w, /argushaus-preview/assets/media/ah-senior-1920.webp 1920w" sizes="(min-width: 1060px) 960px, 90vw" />
-        <img class="media-still" src="/argushaus-preview/assets/media/ah-senior-1920.jpg" srcset="/argushaus-preview/assets/media/ah-senior-960.jpg 960w, /argushaus-preview/assets/media/ah-senior-1920.jpg 1920w" sizes="(min-width: 1060px) 960px, 90vw" width="1920" height="960" alt="A senior professional working at a laptop in a calm office" loading="lazy" decoding="async" />
+        <img class="media-still" src="/argushaus-preview/assets/media/ah-senior-1920.jpg" srcset="/argushaus-preview/assets/media/ah-senior-960.jpg 960w, /argushaus-preview/assets/media/ah-senior-1920.jpg 1920w" sizes="(min-width: 1060px) 960px, 90vw" width="1920" height="960" alt="A consultant thinking over his work at a laptop by tall windows" loading="lazy" decoding="async" />
       </picture>
       </figure>
 
@@ -340,7 +337,7 @@
         <source media="(max-width: 640px)" type="image/webp" srcset="/argushaus-preview/assets/media/ah-team-phone-720.webp 720w, /argushaus-preview/assets/media/ah-team-phone-1080.webp 1080w" sizes="100vw" width="1080" height="720" />
         <source media="(max-width: 640px)" srcset="/argushaus-preview/assets/media/ah-team-phone-720.jpg 720w, /argushaus-preview/assets/media/ah-team-phone-1080.jpg 1080w" sizes="100vw" width="1080" height="720" />
         <source type="image/webp" srcset="/argushaus-preview/assets/media/ah-team-960.webp 960w, /argushaus-preview/assets/media/ah-team-1920.webp 1920w" sizes="(min-width: 1060px) 960px, 90vw" />
-        <img class="media-still" src="/argushaus-preview/assets/media/ah-team-1920.jpg" srcset="/argushaus-preview/assets/media/ah-team-960.jpg 960w, /argushaus-preview/assets/media/ah-team-1920.jpg 1920w" sizes="(min-width: 1060px) 960px, 90vw" width="1920" height="960" alt="Four colleagues in conversation around a table in a bright office" loading="lazy" decoding="async" />
+        <img class="media-still" src="/argushaus-preview/assets/media/ah-team-1920.jpg" srcset="/argushaus-preview/assets/media/ah-team-960.jpg 960w, /argushaus-preview/assets/media/ah-team-1920.jpg 1920w" sizes="(min-width: 1060px) 960px, 90vw" width="1920" height="960" alt="Two consultants in conversation at a table in a glass-walled office" loading="lazy" decoding="async" />
       </picture>
       </figure>
       <dl class="about-terms">

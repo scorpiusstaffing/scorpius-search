@@ -993,8 +993,6 @@ ul, ol { list-style: none; }
 .media video { opacity: 0; }
 .media.is-playing video { opacity: 1; }
 
-.media-band { padding: 0 var(--gutter); }
-.media--band { max-width: 1200px; margin: 0 auto; }
 .media--inline { margin: 0.5rem 0 2.5rem; }
 #about .media--inline { margin-bottom: 0; }
 .media--city { aspect-ratio: 3 / 1; margin: 0 0 2.5rem; }
@@ -1045,12 +1043,110 @@ ul, ol { list-style: none; }
 /* Fixed marginalia keep their contrast when a picture scrolls beneath them:
    only while they overlap a frame, they sit on a small cream plate, like the
    pool badge. On plain background nothing changes. */
-.fixtop > *, .fixbottom > *, .counter {
-  transition: opacity 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
-}
 .fixtop > .over-media, .fixbottom > .over-media, .counter.over-media {
   opacity: 1;
   background-color: var(--cream);
   box-shadow: 0 0 0 0.4rem var(--cream);
   border-radius: 1px;
 }
+
+/* ============================================================
+   HERO FILM: a dark, graded loop behind the opening screen.
+   Faces sit in the clear upper part; the type stands on an ink
+   veil; below the screen the ink fades into the page cream.
+   ============================================================ */
+.hero { --tail: calc(var(--vpad) + 3rem); isolation: isolate; align-items: flex-end; }
+.hero-film {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  background: var(--ink);
+}
+.hero-film picture { display: contents; }
+.hero-film img,
+.hero-film video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 0;
+  display: block;
+}
+.hero-film video { opacity: 0; }
+.hero.is-playing .hero-film video { opacity: 1; }
+.hero-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom,
+    rgb(10 10 12 / .58) 0,
+    rgb(10 10 12 / .12) 9rem,
+    rgb(10 10 12 / .12) 22vh,
+    rgb(10 10 12 / .80) 36vh,
+    rgb(10 10 12 / .88) 56vh,
+    rgb(10 10 12 / .94) calc(100% - 9rem),
+    rgb(10 10 12 / .98) calc(100% - 2rem),
+    rgb(10 10 12 / .98) 100%);
+}
+/* below the screen: ink fading into the page, over the empty top of section 02 */
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: var(--tail);
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(to bottom,
+    rgb(10 10 12 / .98) 0,
+    rgb(10 10 12 / .95) 8%,
+    rgb(10 10 12 / .87) 20%,
+    rgb(10 10 12 / .70) 37%,
+    rgb(10 10 12 / .47) 55%,
+    rgb(10 10 12 / .24) 73%,
+    rgb(10 10 12 / .08) 88%,
+    rgb(10 10 12 / 0) 100%);
+}
+
+.hero .wordmark { color: var(--cream); }
+.hero .wordmark-tag { color: var(--cream); opacity: 0.86; }
+.hero .wordmark-tagline { color: rgb(232 226 212 / .84); }
+.hero .hero-cities { color: rgb(232 226 212 / .72); }
+.hero .scroll-cue { color: var(--cream); opacity: 0.6; }
+.hero .cue-line { background: var(--cream); }
+
+.hero-toggle {
+  position: absolute;
+  right: var(--gutter);
+  bottom: 7.25rem;
+  background: transparent;
+  border-color: rgb(232 226 212 / .45);
+  color: var(--cream);
+  opacity: 0.8;
+}
+.hero-toggle:hover { border-color: var(--cream); opacity: 1; }
+.hero-toggle:focus-visible { outline-color: var(--cream); }
+
+@media (max-width: 640px) {
+  .hero-veil {
+    background: linear-gradient(to bottom,
+      rgb(10 10 12 / .72) 0,
+      rgb(10 10 12 / .46) 4.5rem,
+      rgb(10 10 12 / .10) 9rem,
+      rgb(10 10 12 / .10) 22vh,
+      rgb(10 10 12 / .86) 38vh,
+      rgb(10 10 12 / .92) 60vh,
+      rgb(10 10 12 / .98) calc(100% - 2rem),
+      rgb(10 10 12 / .98) 100%);
+  }
+  .hero-toggle { bottom: 5.75rem; }
+}
+
+/* Fixed marginalia over the dark opening screen turn cream */
+.fixtop > .on-dark, .fixbottom > .on-dark { color: var(--cream); opacity: 0.92; }
+.counter.on-dark { opacity: 0.92; }
+.fixbottom-mail.on-dark { border-bottom-color: var(--cream); }
+.counter.on-dark, .counter.on-dark .counter-slash, .counter.on-dark .counter-total { color: rgb(232 226 212 / .85); }
+.fixtop > *, .fixbottom > *, .counter { transition: opacity 0.2s ease, color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease; }
