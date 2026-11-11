@@ -1053,9 +1053,9 @@ ul, ol { list-style: none; }
 /* ============================================================
    HERO FILM: a dark, graded loop behind the opening screen.
    Faces sit in the clear upper part; the type stands on an ink
-   veil; below the screen the ink fades into the page cream.
+   veil; the screen ends on a clean edge into the page cream.
    ============================================================ */
-.hero { --tail: calc(var(--vpad) + 3rem); isolation: isolate; align-items: flex-end; }
+.hero { isolation: isolate; align-items: flex-end; }
 .hero-film {
   position: absolute;
   inset: 0;
@@ -1089,26 +1089,7 @@ ul, ol { list-style: none; }
     rgb(10 10 12 / .98) calc(100% - 2rem),
     rgb(10 10 12 / .98) 100%);
 }
-/* below the screen: ink fading into the page, over the empty top of section 02 */
-.hero::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 100%;
-  height: var(--tail);
-  z-index: -1;
-  pointer-events: none;
-  background: linear-gradient(to bottom,
-    rgb(10 10 12 / .98) 0,
-    rgb(10 10 12 / .95) 8%,
-    rgb(10 10 12 / .87) 20%,
-    rgb(10 10 12 / .70) 37%,
-    rgb(10 10 12 / .47) 55%,
-    rgb(10 10 12 / .24) 73%,
-    rgb(10 10 12 / .08) 88%,
-    rgb(10 10 12 / 0) 100%);
-}
+/* the film ends on a clean edge at the bottom of the screen: a dark band, then the cream page, like the band changes on the group sites */
 
 .hero .wordmark { color: var(--cream); }
 .hero .wordmark-tag { color: var(--cream); opacity: 0.86; }
